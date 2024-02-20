@@ -15,6 +15,9 @@ const markdownLicenseBadges = {
     'Mozilla Public License 2.0': '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)',
 };
 
+// Сall by key from markdownLicenseBadges array
+const licenseChoices = Object.keys(markdownLicenseBadges);
+
 // Questions for user
 const questions = () => {
 
@@ -78,12 +81,15 @@ const questions = () => {
     ]);
 };
 
+// returns the icon's URL or an empty string.
+function getIcon(license) { return markdownLicenseBadges[license] || ""; };
+
 // Data entry check
 function dataChecking(inputData, fieldName) {
     if (inputData) {
         return true;
     } else {
-        console.log(`FAILED VALIDATION! - ${fieldName} is a mandatory field.`);
+        console.log(`FAILED! - ${fieldName} cannot be empty!`);
         return false;
     }
 }
@@ -105,7 +111,7 @@ function writeToFile(fileName, data) {
 function init() {
     questions()
         .then(answer => {
-            let fileMarkdown = generateMarkdown(answer);
+            let fileMarkdown = generateMarkdown(answer, getIcon);
             console.log("Generating ..");
             writeToFile(fileSavePath, fileMarkdown);
             console.log("Created");
@@ -114,5 +120,3 @@ function init() {
 
 // function call to initialize program
 init();
-
-console.log("HELLO");
