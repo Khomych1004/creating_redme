@@ -1,14 +1,15 @@
 {
-  "name": "static-site",
+  "type": "module",
+  "name": "creating_redme",
   "version": "1.0.0",
-  "description": "",
+  "description": "Application that creates the README.md file",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Oleksandr Khomych",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^6.3.1"
+    "inquirer": "^9.2.15"
   }
 }

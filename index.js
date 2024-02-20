@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require('path');
-const inquirer = require("inquirer");
-const generateMarkdown = require("./utils/generateMarkdown");
+import fs from 'fs';
+//const path = require('path');
+import inquirer from 'inquirer';
+import generateMarkdown from './utils/generateMarkdown.js';
 
 // array of questions for user
 const questions = [
@@ -19,3 +19,5 @@ function init() {
 
 // function call to initialize program
 init();
+
+console.log("HELLO");
