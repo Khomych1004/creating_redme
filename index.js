@@ -23,26 +23,26 @@ const questions = () => {
             name: 'title',
             type: 'input',
             message: 'Project name?',
-            validate: inputTitle => { return validateMandatoryDataInput(inputTitle, "Title") }
+            validate: inputTitle => { return dataChecking(inputTitle, "Title") }
         },
         {
             name: 'description',
             type: 'input',
             message: 'description of your project?',
-            validate: inputDescription => { return validateMandatoryDataInput(inputDescription, "Description") }
+            validate: inputDescription => { return dataChecking(inputDescription, "Description") }
         },
         {
             name: 'installation',
             type: 'input',
             message: 'installation instructions?',
             default: 'npm i',
-            validate: inputInstallation => { return validateMandatoryDataInput(inputInstallation, "Installation Instructions") }
+            validate: inputInstallation => { return dataChecking(inputInstallation, "Installation Instructions") }
         },
         {
             name: 'usage',
             type: 'input',
             message: 'describe the usefulness of the application?',
-            validate: inputUsage => { return validateMandatoryDataInput(inputUsage, "Usefulness of the application") }
+            validate: inputUsage => { return dataChecking(inputUsage, "Usefulness of the application") }
         },      
         {
             name: 'license',
@@ -50,7 +50,7 @@ const questions = () => {
             message: 'Select a license for your application',
             choices: licenseChoices,
             default: 'MIT',
-            validate: inputLicense => { return validateMandatoryDataInput(inputLicense, "License Type") }
+            validate: inputLicense => { return dataChecking(inputLicense, "License Type") }
         },   
         {
             name: 'contributing',
@@ -67,16 +67,26 @@ const questions = () => {
             name: 'github_username',
             type: 'input',
             message: 'What is your GitHub Username?',
-            validate: inputGitHubUserName => { return validateMandatoryDataInput(inputGitHubUserName, "GitHub Username") }
+            validate: inputGitHub => { return dataChecking(inputGitHub, "GitHub Username") }
         },    
         {
             name: 'email_address',
             type: 'input',
             message: 'What is your Email Address?',
-            validate: inputEmailAddress => { return validateMandatoryDataInput(inputEmailAddress, "Email Address") }
+            validate: inputEmail => { return dataChecking(inputEmail, "Email Address") }
         },
     ]);
 };
+
+// Data entry check
+function dataChecking(inputData, fieldName) {
+    if (inputData) {
+        return true;
+    } else {
+        console.log(`FAILED VALIDATION! - ${fieldName} is a mandatory field.`);
+        return false;
+    }
+}
 
 // function to write README file
 function writeToFile(fileName, data) {
