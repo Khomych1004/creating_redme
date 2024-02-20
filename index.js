@@ -43,7 +43,7 @@ const questions = () => {
             type: 'input',
             message: 'describe the usefulness of the application?',
             validate: inputUsage => { return dataChecking(inputUsage, "Usefulness of the application") }
-        },      
+        },
         {
             name: 'license',
             type: 'list',
@@ -51,24 +51,24 @@ const questions = () => {
             choices: licenseChoices,
             default: 'MIT',
             validate: inputLicense => { return dataChecking(inputLicense, "License Type") }
-        },   
+        },
         {
             name: 'contributing',
             type: 'input',
             message: 'Add project participants?'
-        },      
+        },
         {
             name: 'tests',
             type: 'input',
             message: 'What command should be run to run Tests?',
             default: 'npm test'
-        },     
+        },
         {
             name: 'github_username',
             type: 'input',
             message: 'What is your GitHub Username?',
             validate: inputGitHub => { return dataChecking(inputGitHub, "GitHub Username") }
-        },    
+        },
         {
             name: 'email_address',
             type: 'input',
@@ -90,6 +90,15 @@ function dataChecking(inputData, fieldName) {
 
 // function to write README file
 function writeToFile(fileName, data) {
+
+    fs.writeFile(fileName, data, err => {
+
+        if (err) {
+            console.error(err);
+        } else {
+            console.log(`'${fileName}' has been created successfully`)
+        }
+    });
 }
 
 // function to initialize program
