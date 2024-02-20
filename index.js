@@ -103,7 +103,13 @@ function writeToFile(fileName, data) {
 
 // function to initialize program
 function init() {
-
+    questions()
+        .then(answer => {
+            let fileMarkdown = generateMarkdown(answer);
+            console.log("Generating ..");
+            writeToFile(fileSavePath, fileMarkdown);
+            console.log("Created");
+        })
 }
 
 // function call to initialize program
