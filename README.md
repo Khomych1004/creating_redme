@@ -1,5 +1,7 @@
 # creating_redme
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ![application screenshot](created_readme/img.jpg)
 
 ## Description
